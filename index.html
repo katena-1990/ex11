@@ -21,10 +21,19 @@
         const contentEl = document.querySelector('.content');
         const topEl = document.createElement('div');
         topEl.classList.add('top__content');
-
+        // const cart = [];
+        // const cartEl = document.createElement('div');
         json.forEach(jsonEl => {
+
+            // () => {
+            //     cart.push(jsonEl);
+            //     updateCart();
+            // }
             const itemEl = document.createElement('div');
-            itemEl.classList.add('item');
+            itemEl.classList.add('product__item');
+
+            const productEl = document.createElement('div');
+            productEl.classList.add('product__photo');
 
             const imgEl = document.createElement('img');
             imgEl.classList.add('photo');
@@ -32,6 +41,21 @@
             imgEl.alt = 'photo';
             imgEl.style.width = '360px';
             imgEl.style.height = '420px';
+
+            const buttonEl = document.createElement('div');
+            buttonEl.classList.add('button');
+
+            const btnEl = document.createElement('button');
+            btnEl.classList.add('product__item-btn');
+            btnEl.type = 'button';
+
+            const basketEl = document.createElement('img');
+            basketEl.src = jsonEl.img_basket;
+            basketEl.alt = 'btn_basket';
+
+            const spanEl = document.createElement('span');
+            spanEl.textContent = jsonEl.span;
+
 
             const textEl = document.createElement('div');
             textEl.classList.add('text__content');
@@ -49,12 +73,19 @@
             priceEl.textContent = jsonEl.price;
 
             topEl.appendChild(itemEl);
-            itemEl.appendChild(imgEl);
+            itemEl.appendChild(productEl);
+            productEl.appendChild(imgEl);
+            productEl.appendChild(buttonEl);
+            buttonEl.appendChild(btnEl);
+            btnEl.appendChild(basketEl);
+            btnEl.appendChild(spanEl);
+
             itemEl.appendChild(textEl);
             textEl.appendChild(subtitleEl);
             textEl.appendChild(txtEl);
             textEl.appendChild(priceEl);
         });
+
         contentEl.appendChild(topEl)
     </script>
 </body>
